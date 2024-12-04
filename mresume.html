@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="biodata.html">Bio-data</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>My Resume</h1>
+
+        <section class="resume-section">
+            <h2>Education</h2>
+            <ul>
+                <li>B.Tech in Computer Science – XYZ University (2021-2025)</li>
+                <li>Higher Secondary Education – ABC School (2019-2021)</li>
+            </ul>
+
+            <h2>Work Experience</h2>
+            <div class="accordion">
+                <button class="accordion-btn">Backend Developer Intern – Clarity Technologies, Zimbabwe (2024)</button>
+                <div class="accordion-content">
+                    <p>Worked on developing scalable backend solutions using Node.js and Docker, improving the deployment efficiency by 30%.</p>
+                </div>
+
+                <button class="accordion-btn">Full Stack Developer – Freelance Projects (2022-2023)</button>
+                <div class="accordion-content">
+                    <p>Developed multiple full-stack web applications for small businesses, including e-commerce and portfolio websites.</p>
+                </div>
+            </div>
+
+            <h2>Certifications</h2>
+            <ul>
+                <li>Cisco Networking Foundations: Switching and Routing</li>
+                <li>AWS Certified Solutions Architect</li>
+            </ul>
+
+            <h2>Projects</h2>
+            <ul>
+                <li>Legal Assistant Project – Developed a backend system for a legal platform.</li>
+                <li>E-commerce Platform – Created a full-stack web application for online shopping.</li>
+            </ul>
+
+            <!-- Skills Section with Interactive Bar -->
+            <h2>Skills</h2>
+            <div class="skill" data-skill="80">
+                <label>Backend Development</label>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%;"></div>
+                </div>
+            </div>
+            <div class="skill" data-skill="70">
+                <label>Frontend Development</label>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%;"></div>
+                </div>
+            </div>
+            <div class="skill" data-skill="90">
+                <label>Cloud Technologies</label>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%;"></div>
+                </div>
+            </div>
+            <div class="skill" data-skill="75">
+                <label>DevOps Tools</label>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Manohar N. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Accordion Effect for Work Experience
+        document.querySelectorAll('.accordion-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                let content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        });
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', function() {
+            let scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            let scrollPosition = window.scrollY;
+            let scrollPercent = (scrollPosition / scrollHeight) * 100;
+            document.getElementById('progress-bar').style.width = scrollPercent + '%';
+        });
+
+        // Skill Bar Animation
+        window.addEventListener('scroll', function () {
+            let skills = document.querySelectorAll('.skill');
+            skills.forEach(skill => {
+                let skillPos = skill.getBoundingClientRect().top;
+                let windowHeight = window.innerHeight;
+
+                if (skillPos < windowHeight) {
+                    let progress = skill.querySelector('.progress');
+                    let skillLevel = skill.getAttribute('data-skill');
+                    progress.style.width = skillLevel + '%';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
